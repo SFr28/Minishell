@@ -6,7 +6,7 @@
 /*   By: sfraslin <sfraslin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:05:34 by sfraslin          #+#    #+#             */
-/*   Updated: 2025/02/10 14:00:54 by sfraslin         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:01:06 by sfraslin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,33 @@ int ft_count_cmd(char *str, int i, int count)
         i++;
     }
     printf("count: %d\n", count);
+    return (count);
+}
+
+int  ft_quote(char *str, int i)
+{
+    int count;
+
+    count = 0;
+    i++;
+    if (str[i - 1] == 34)
+    {
+        count++;
+        while (str[i] && str[i] != 34)
+            i++;
+        if (!str[i])
+            return (0);
+        i++;
+    }
+    if (str[i - 1] == 39)
+    {
+        count++;
+        while (str[i] && str[i] != 39)
+            i++;
+        if (!str[i])
+            return (0);
+        i++;
+    }
     return (count);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sfraslin <sfraslin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:05:34 by sfraslin          #+#    #+#             */
-/*   Updated: 2025/02/10 14:01:19 by sfraslin         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:01:00 by sfraslin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,19 @@
 int  ft_quote(char *str, int i);
 int  ft_count_cmd(char *str, int i, int count);
 int  ft_len_cmd(char *str, char c);
-char *ft_strup_quote(char *str, char *tab);
-char *ft_strup_cmd(char *str, char *tab);
+char *ft_strdup_quote(char *str, char *tab);
+char *ft_strdup_cmd(char *str, char *tab);
 char	**ft_freetab_cmd(char **tab, int i);
 int ft_strlen(char *str);
 char    *ft_sort_cmd(char *str, char *tab, int i);
 
-int  ft_quote(char *str, int i)
-{
-    int count;
-
-    count = 0;
-    i++;
-    if (str[i - 1] == 34)
-    {
-        count++;
-        while (str[i] && str[i] != 34)
-            i++;
-        if (!str[i])
-            return (0);
-        i++;
-    }
-    if (str[i - 1] == 39)
-    {
-        count++;
-        while (str[i] && str[i] != 39)
-            i++;
-        if (!str[i])
-            return (0);
-        i++;
-    }
-    return (count);
-}
-
-char *ft_strup_quote(char *str, char *tab)
+char *ft_strdup_quote(char *str, char *tab)
 {
     char    c;
     int     i;
     
-    tab = (char *)malloc(sizeof(char) * ft_len_cmd(str, str[i]) + 2);
     c = str[0];
+    tab = (char *)malloc(sizeof(char) * ft_len_cmd(str, c) + 1);
     if (tab == NULL)
         return (NULL);
     tab[0] = c;
@@ -71,14 +44,14 @@ char *ft_strup_quote(char *str, char *tab)
     return (tab);
 }
 
-char *ft_strup_cmd(char *str, char *tab)
+char *ft_strdup_cmd(char *str, char *tab)
 {
     int i;
 
     i = 0;
     if (str[i] == 34 || str[i] == 39)
     {
-        tab = ft_strup_quote(&str[i], tab);
+        tab = ft_strdup_quote(&str[i], tab);
         return (tab);
     }
     tab = (char *)malloc(sizeof(char) * ft_len_cmd(str, ' ') + 1);
@@ -112,7 +85,7 @@ char    **ft_split_cmd(char *str)
     {
         tab[j] = ft_sort_cmd(str, tab[j], i);
         i += ft_strlen(tab[j]);
-        if (i == 32)
+        if (str[i] == 32)
             i++;
         j++;
     }
@@ -124,7 +97,7 @@ char    *ft_sort_cmd(char *str, char *tab, int i)
 {
     while (str[i] && str[i] == 32)
         i++;
-    tab = ft_strup_cmd(&str[i], tab);
+    tab = ft_strdup_cmd(&str[i], tab);
     if (tab == NULL)
 	{
 		ft_freetab_cmd(&tab, i);
