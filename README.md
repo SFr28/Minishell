@@ -3,8 +3,8 @@
 **Projet de groupe** : Réimplémentation d'un shell basique en C, compatible avec un sous-ensemble des fonctionnalités de `bash`.
 
 ## Auteurs:
-Saina Fraslin: parsing
-Solenne Vincen (@Silver-444): exécution et buildins
+Saïna Fraslin : parsing
+Solenne Vincen (@Silver-444) : exécution et buildins
 
 ---
 
