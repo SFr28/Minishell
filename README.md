@@ -11,7 +11,7 @@ Solenne Vincen (@Silver-444) : exécution et buildins
 ## Description du projet
 Minishell est un projet visant à créer un shell Unix minimaliste, capable de :
 - Lire et analyser des commandes utilisateur.
-- Gérer les tubes (`|`), redirections (`>`, `>>`, `<`), et variables d'environnement.
+- Gérer les pipes (`|`), redirections (`>`, `>>`, `<`), et variables d'environnement.
 - Exécuter des commandes externes et internes (`echo`, `cd`, `exit`, etc.).
 
 ---
